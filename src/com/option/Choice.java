@@ -1,0 +1,70 @@
+package com.option;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Choice {
+	public Choice(){
+		this("..................................", "Enter your choice:: ");
+	}
+	public Choice( String startLine, String endLine ){
+		this.startLine = startLine;
+		this.endLine = endLine;		
+		items = new ArrayList<String>();
+	}
+	public Choice( String startLine ){
+		this(startLine,"Enter your choice:: ");
+	}
+	public Choice( int  i ,String endLine ){
+		this("..................................", endLine );
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////// user input methods //////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+
+	public char getChar() {
+		this.print();
+		char choice = stringSc.next().charAt(0);
+		return choice;		
+	}
+	public int getInt() {
+		this.print();
+		int choice = sc.nextInt();
+		return choice;
+	}
+	public String getString() {
+		this.print();
+		String choice = stringSc.nextLine();
+		return choice;
+		
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////// maintaining the menu /////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+
+	public void add( String item ) {
+		this.items.add(item);
+	}
+	public void clearItems() {
+		if(!items.isEmpty())
+			items.clear();
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////// private methods ///////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	
+	private void print() {
+		System.out.println( this.startLine );
+		for( String s: items ) 
+			System.out.println( s );
+		System.out.println( this.endLine );
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////// private variables //////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	private ArrayList<String> items;
+	private String startLine;
+	private String endLine;
+	private static Scanner sc = new Scanner( System.in );
+	private static Scanner stringSc = new Scanner( System.in );
+}
